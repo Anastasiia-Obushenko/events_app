@@ -1,6 +1,6 @@
-import React from 'react'
+import React from 'react';
 
-const Events = () => {
+const EventsPage = () => {
   return (
     <div>
       <h1>Events Page</h1>
@@ -17,7 +17,7 @@ const Events = () => {
         <h2>Events in Paris</h2>
       </a>
     </div>
-  )
-}
+  );
+};
 
-export default Events
+export default EventsPage;

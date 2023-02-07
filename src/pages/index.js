@@ -5,7 +5,7 @@ import styles from '@/styles/Home.module.css';
 
 const inter = Inter({ subsets: ['latin'] });
 
-export default function Home({ event_categories, events }) {
+export default function Home({ events_categories, events }) {
   return (
     <>
       <Head>
@@ -50,7 +50,7 @@ export async function getServerSideProps() {
   return {
     props: {
       events: events,
-      event_categories: events_categories,
+      events_categories: events_categories,
       // cities: cities
     },
   };

@@ -23,11 +23,9 @@ export default function Home({ events_categories, events }) {
         </nav>
       </header>
       <main className={styles.main}>
-        {event_categories.map(ev =>
+        {events_categories.map(ev =>
           <a href={`/events/${ev.id}`} key={ev.id}>
-
             <Image src={ev.image} alt={ev.title} width={200} height={100} style={{ height: '100%' }} />
-
             <h2>{ev.title}</h2>
             <p>{ev.description}</p>
           </a>)}
@@ -46,7 +44,6 @@ export async function getServerSideProps() {
   // console.log(events[0]._embedded.venues[0].city.name);
   // console.log(cities);
   const { events_categories } = await import('/data/data.json');
-  console.log(events_categories);
   return {
     props: {
       events: events,

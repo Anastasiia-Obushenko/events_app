@@ -26,7 +26,7 @@ export default function Home({ event_categories, events }) {
         {event_categories.map(ev =>
           <a href={`/events/${ev.id}`} key={ev.id}>
 
-            <Image src={ev.image} width={100} height={50} />
+            <Image src={ev.image} alt={ev.title} width={200} height={100} style={{ height: '100%' }} />
 
             <h2>{ev.title}</h2>
             <p>{ev.description}</p>

@@ -5,7 +5,7 @@ import styles from '@/styles/Home.module.css';
 
 const inter = Inter({ subsets: ['latin'] });
 
-export default function Home({ events_categories, events }) {
+export default function Home({ events_categories}) {
   return (
     <>
       <Head>
@@ -37,18 +37,10 @@ export default function Home({ events_categories, events }) {
   );
 }
 export async function getServerSideProps() {
-  const res = await fetch(`https://app.ticketmaster.com/discovery/v2/events.json?apikey=${process.env.API_KEY}&page=1`);
-  const data = await res.json();
-  const { events } = data._embedded;
-  // const cities = events.map(ev => ev._embedded.venues[0].city.name);
-  // console.log(events[0]._embedded.venues[0].city.name);
-  // console.log(cities);
   const { events_categories } = await import('/data/data.json');
   return {
     props: {
-      events: events,
       events_categories: events_categories,
-      // cities: cities
     },
   };
 }

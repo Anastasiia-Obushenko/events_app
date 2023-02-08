@@ -1,15 +1,16 @@
 import Image from 'next/image';
+import Link from 'next/link';
 
 const EventsPage = ({ events_categories }) => {
   return (
     <div>
       <h1>Events Page</h1>
       {events_categories.map(ev =>
-          <a href={`/events/${ev.id}`} key={ev.id}>
+        <Link href={`/events/${ev.id}`} key={ev.id} passHref>
             <Image src={ev.image} alt={ev.title} width={200} height={100} style={{ height: '100%' }} />
             <h2>{ev.title}</h2>
-          </a>)}
-
+        </Link>
+      )}
     </div>
   );
 };

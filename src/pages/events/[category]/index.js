@@ -1,15 +1,16 @@
 import Image from 'next/image';
+import Link from 'next/link';
 
 const EventsCategoryPage = ({ events, id }) => {
     return (
         <div>
-            <h1>Events in {id.charAt(0).toUpperCase()+id.slice(1) }</h1>
+            <h1>Events in {id.charAt(0).toUpperCase() + id.slice(1)}</h1>
             {events.map(ev =>
-                <a key={ev.id} href={`/events/${id}/${ev.id}`}>
-                    <Image src={ev.images[0].url} width={250} height={150}/>
-                    <h2>{ev.name}</h2>
-                    <p>{ev.description}</p>
-                </a>
+                <Link key={ev.id} href={`/events/${id}/${ev.id}`} passHref>
+                        <Image src={ev.images[0].url} width={250} height={150} />
+                        <h2>{ev.name}</h2>
+                        <p>{ev.description}</p>
+                </Link>
             )}
         </div>
     );
@@ -34,7 +35,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps(context) {
     const id = context.params.category;
-    const res = await fetch(`https://app.ticketmaster.com/discovery/v2/events.json?apikey=${process.env.API_KEY}&city=${id}&locale=*&sort=date,asc&page=1`);
+    const res = await fetch(`https://app.ticketmaster.com/discovery/v2/events.json?apikey=${process.env.API_KEY}&city=${id}&locale=*&size=15&sort=date,asc&page=1`);
     const data = await res.json();
     const { events } = data._embedded;
     return {
